@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('type_id')->nullable()->after('user_id');
             $table->foreign('type_id')
                 ->references('id')
-                ->on('types')->nullOnDelete();
+                ->on('types')
+                ->nullOnDelete();
         });
     }
 

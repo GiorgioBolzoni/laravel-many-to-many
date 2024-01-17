@@ -52,40 +52,24 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $form_data = $request->validated();
+        // dd($form_data);
 
-        // Aggiungere la chiave 'type_id' alle regole di validazione se non è già presente
-        $request->merge(['type_id' => $request->input('type_id', null)]);
-
-        // Generare lo slug e l'ID utente
         $slug = Project::getSlug($form_data['title']);
-        $userId = auth()->id();
 
-        // Aggiungere lo slug e l'ID utente ai dati del modulo
+
         $form_data['slug'] = $slug;
+
+        $userId = auth()->id();
         $form_data['user_id'] = $userId;
 
-        // Gestire l'upload dell'immagine
         if ($request->hasFile('image')) {
             $name = Str::slug($form_data['title'], '-') . '.jpg';
             $img_path = Storage::putFileAs('images', $form_data['image'], $name);
             $form_data['image'] = $img_path;
         }
 
-        // Ottenere l'ID della tipologia dal modulo
-        $type_id = $request->input('type_id');
 
-        // Salvataggio dell'associazione progetto-tipologia
-        $type = Type::find($type_id);
-
-        if ($type) {
-            $newProject = Project::create($form_data);
-            $newProject->type()->associate($type);
-            $newProject->save();
-
-            return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
-        } else {
-            return redirect()->back()->with('error', 'Invalid type selected');
-        }
+        return to_route('admin.projects.index');
     }
 
 
@@ -117,6 +101,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
+        $form_data['slug'] = $project->slug;
 
         if ($project->title !== $form_data['title']) {
             $slug = Project::getSlug($form_data['title']);

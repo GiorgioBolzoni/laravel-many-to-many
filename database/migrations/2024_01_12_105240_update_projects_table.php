@@ -13,7 +13,8 @@ return new class extends Migration {
         Schema::table('projects', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')->cascadeOnDelete();
+                ->on('users')
+                ->cascadeOnDelete();
         });
     }
 

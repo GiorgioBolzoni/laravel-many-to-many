@@ -13,9 +13,15 @@ class TypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $types = Type::all();
+        if (!empty($request->query('search'))) {
+            $search = $request->query('search');
+            $types = Type::where('name', 'like', $search . '%')->get();
+
+        } else {
+            $types = Type::all();
+        }
         return view('admin.types.index', compact('types'));
     }
 

@@ -23,7 +23,7 @@ class StoreTypeRequest extends FormRequest
     {
         return [
 
-            'name' => ['required', 'min:3', 'max:200', 'unique:categories'],
+            'name' => ['required', 'min:3', 'max:200', 'unique:types'],
         ];
     }
 

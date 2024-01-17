@@ -13,9 +13,10 @@ return new class extends Migration {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('author_id');
-            $table->string('title', 200)->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title', 255)->unique();
             $table->string('slug', 255)->unique();
+            $table->string('link', 255);
             $table->string('image', 255)->nullable();
             $table->text('body')->nullable();
 

@@ -14,11 +14,17 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['Casa', 'Cucina', 'Ufficio', 'Giochi', 'Notizie'];
-        foreach ($types as $value) {
+        $categories = [
+            'Front-end',
+            'Back-end',
+            'Full Stack'
+        ];
+
+        foreach ($categories as $type) {
             $newType = new Type();
-            $newType->name = $value;
-            $newType->slug = Str::slug($value, '-');
+            $newType->name = $type;
+            $newType->slug = Str::slug($type, '-');
+
             $newType->save();
         }
     }
