@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 
 use Illuminate\Http\Request;
 
@@ -43,7 +44,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -68,6 +70,11 @@ class ProjectController extends Controller
             $form_data['image'] = $img_path;
         }
 
+        $newProject = Project::create($form_data);
+
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
 
         return to_route('admin.projects.index');
     }
@@ -90,8 +97,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
 
     }
 
@@ -124,6 +132,12 @@ class ProjectController extends Controller
 
         $project->update($form_data);
 
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        } else {
+            $project->technologies()->sync([]);
+        }
+
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
@@ -132,6 +146,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->technologies()->detach();
+
         $project->delete();
         if ($project->image) {
             Storage::delete($project->image);
