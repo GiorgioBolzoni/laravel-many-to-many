@@ -27,6 +27,7 @@ class StoreProjectRequest extends FormRequest
             'body' => ['nullable'],
             'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png', 'max:10240'],
             'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|exists:technologies,id'
 
         ];
     }
@@ -44,7 +45,7 @@ class StoreProjectRequest extends FormRequest
             'image.image' => 'L\'immagine deve essere di tipo image',
             'image.max' => 'L\'immagine deve essere massimo 10MB',
             'type_id.exists' => 'Devi scegliere un type esistente',
-
+            'technologies.exists' => 'Devi scegliere delle tecnologie esistenti'
 
         ];
     }
