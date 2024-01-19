@@ -4,12 +4,12 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-column w-100 text-center">
                 <h1>{{ $project->title }}</h1>
-                <p><a href="{{ $project->link }}">{{ $project->link }}</a></p>
+                <p><a id="link" href="{{ $project->link }}">{{ $project->link }}</a></p>
             </div>
 
             <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success px-3">Edit</a>
         </div>
-        <div class="card p-3">
+        <div class="card p-3 d-flex align-items-center">
             <p class="py-3 text-center text-wrap">{!! $project->body !!}</p>
             <div class="d-flex justify-content-center">
                 @if ($project->type_id)

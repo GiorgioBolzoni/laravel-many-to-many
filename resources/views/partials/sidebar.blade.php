@@ -20,6 +20,14 @@
                     <a class="nav-link" href="{{ route('admin.projects.create') }}">Add a new project</a>
 
                 </li>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.types.index') }}">Types</a>
+
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ route('admin.technologies.index') }}">Tech</a>
+
+                </li>
             @endguest
         </ul>
         {{-- <div class="sb-sidenav-footer">

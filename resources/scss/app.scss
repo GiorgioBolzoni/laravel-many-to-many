@@ -8,71 +8,147 @@ $fa-font-path: "../fonts/webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 @import '~bootstrap/scss/bootstrap';
+////////////////////////////////////////////
+////////////////////////////////////////////
 
+// GENERAL
 #app{
     width:100%;
     height: 100vh;
-    background-color: $oxford-blue;
-
+    background-color: var(--oxford-blue);
+    overflow-y: hidden;
 }
 
 h1 {
-    color: $orange-web;
+    color: var(--orange-web);
     text-align: center;
     vertical-align: middle;
     padding-top: 30px;
 }
 h3{
-    color: $platinum;
+    color: var(--platinum);
     text-align: center;
     vertical-align: middle;
     padding-top: 30px;
 }
-
+img{
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    box-shadow: 1px 1px 2px var(--black-ff);
+}
+.card-img{
+    width: 500px;
+}
+#link{
+    color: var(--platinum);
+    &:hover{
+        color: rgb(44, 187, 212);
+    }
+}
 #nav{
     height: 80px !important;
     width: 100%;
+    box-shadow: 0px 3px 2px 1px var(--black-ff);
+    color: var(--orange-web);
+
     nav{
-        background-color: $black;
         height: 100%;
-        color: $orange-web;
+        background-color: var(--black-ff);
         a{
-        color: $platinum !important;
+        color: var(--platinum) !important;
             &:hover{
-                color: $orange-web !important;
+                color: var(--orange-web) !important;
             }
         }
 
     }
 }
-
+// links
 a {
     text-decoration: none;
 }
 li {
     list-style: none;
 }
+// main
 
-/* main  */
 main{
     height: calc(100% - 80px);
+
 }
 .main-content {
 
     height: 100%;
     width: calc(100% - 150px);
-    overflow-y: auto;
+    overflow-y:hidden;
     padding: 20px;
+
+}
+.h-500{
+    height: 500px;
+    overflow: hidden;
+    width: 100%;
+
+}
+.scrollbar
+{
+    float: right;
+    height: 100%;
+    background: white;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    width: 100%;
+
+    .table{
+        background-color: var(--platinum);
+        height: max-content;
+        width: 100%;
+    }
+
+    &::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0.1);
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar
+    {
+        width: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        height: 50px;
+
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                                        40% 0%,
+                                        75% 84%,
+                                        from(var(--orange-web)),
+                                        to(var(--orange-web)),
+                                        color-stop(.6,rgb(255, 211, 141)))
+    }
 }
 
+
+section{
+    height: 100%;
+}
+////////////////////////////////////////////
+////////////////////////////////////////////
+
+// SIDEBAR e NAVBAR
 #sidebar {
     width: 150px;
     height: 100%;
     text-align: center;
-    background-color: $black;
+    background-color: var(--black-ff);
     padding-top: 20px;
     a{
-        color: $platinum!important;
+        color: var(--platinum)!important;
         font-weight: bold;
         text-align: center;
         padding-top: 20px;
@@ -80,9 +156,9 @@ main{
         border: 1px solid transparent;
         width: 100%;
         &:hover{
-            color: $orange-web !important;
-            border-bottom: 1px solid $platinum;
-            border-top: 1px solid $platinum;
+            color: var(--orange-web) !important;
+            border-bottom: 1px solid var(--platinum);
+            border-top: 1px solid var(--platinum);
         }
     }
 }
@@ -91,13 +167,31 @@ main{
     flex-shrink: 0;
   }
 .sb-sidenav-footer {
-color: $platinum;
+color: var(--platinum);
 }
 .dropdown-menu{
-    border: 1px solid $platinum;
-    background-color: $black;
+    border: 1px solid var(--platinum);
+    background-color: var(--black-ff);
     a:hover{
-        background-color: $black;
+        background-color: var(--black-ff);
     }
 
 }
+////////////////////////////////////////////
+////////////////////////////////////////////
+
+// PROJECTS
+
+
+////////////////////////////////////////////
+////////////////////////////////////////////
+
+// TYPES
+
+
+
+////////////////////////////////////////////
+////////////////////////////////////////////
+
+// TECHNOLOGIES
+

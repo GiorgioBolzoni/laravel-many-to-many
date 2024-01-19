@@ -2,7 +2,7 @@
 @section('content')
     <section class="container">
         <h1>Type List</h1>
-        <div class="text-end">
+        <div class="text-center p-2">
             <a class="btn btn-success" href="{{ route('admin.types.create') }}">Crea nuovo type</a>
         </div>
 

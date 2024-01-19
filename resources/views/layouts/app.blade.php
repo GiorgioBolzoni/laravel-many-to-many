@@ -94,17 +94,28 @@
             </nav>
         </div>
 
+        <div class="h-100">
+            <main class="d-flex">
+                @include('partials.sidebar')
 
-        <main class="d-flex">
-            @include('partials.sidebar')
-            <div class="main-content">
-                @yield('content')
-            </div>
-        </main>
+                <div class="d-flex flex-column w-100">
+                    <div class="main-content w-100">
+                        @yield('content')
+
+                    </div>
+                    <div class="w-100">
+                        @include('partials.footer')
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+
 
 
     </div>
-    @include('partials.footer')
+
 </body>
 
 </html>

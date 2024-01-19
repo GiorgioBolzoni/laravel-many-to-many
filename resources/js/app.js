@@ -39,3 +39,8 @@ previewImage.addEventListener("change", (event) => {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
     };
 });
+// $(document).ready(function () {
+//     if (!$.browser.webkit) {
+//         $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
+//     }
+// });

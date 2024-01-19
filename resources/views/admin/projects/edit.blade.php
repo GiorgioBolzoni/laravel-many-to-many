@@ -89,11 +89,7 @@
                                     </div>
 
                                     <div class="d-flex">
-                                        <div class="media me-4">
-                                            <img class="shadow" width="150"
-                                                src="{{ asset('storage/' . $project->image) }}"
-                                                alt="{{ $project->title }}">
-                                        </div>
+
                                         <div class="mb-3">
                                             <label for="image">Image</label>
                                             <input type="file" class="form-control @error('image') is-invalid @enderror"
@@ -114,8 +110,8 @@
                                     @enderror
                                 </div>
                                 <div class="mt-3">
-                                    <button type="submit" class="btn btn-success">Save</button>
-                                    <button type="reset" class="btn btn-primary">Reset</button>
+                                    <button type="submit" class="btn btn-success m-2">Save</button>
+                                    <button type="reset" class="btn btn-primary m-2">Reset</button>
                                 </div>
 
                         </form>
